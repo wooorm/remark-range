@@ -1,6 +1,6 @@
 {
   "name": "mdast-range",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Range information to mdast",
   "license": "MIT",
   "keywords": [
