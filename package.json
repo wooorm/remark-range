@@ -1,0 +1,53 @@
+{
+  "name": "mdast-range",
+  "version": "0.0.0",
+  "description": "Range information to mdast",
+  "license": "MIT",
+  "keywords": [
+    "range",
+    "location",
+    "position",
+    "node",
+    "mdast"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/mdast-range.git"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "peerDependencies": {
+    "mdast": ">=0.17.0"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.0",
+    "eslint": "^0.18.0",
+    "esmangle": "^1.0.0",
+    "istanbul": "^0.3.0",
+    "jscs": "^1.0.0",
+    "jscs-jsdoc": "^0.4.0",
+    "mdast": "^0.17.0",
+    "mdast-github": "^0.2.0",
+    "mdast-toc": "^0.2.0",
+    "mdast-usage": "^0.2.0",
+    "mdast-yaml-config": "^0.1.0",
+    "mocha": "^2.0.0"
+  },
+  "scripts": {
+    "test-api": "mocha --check-leaks test.js",
+    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test.js",
+    "test-coverage": "istanbul cover _mocha -- test.js",
+    "test-travis": "npm run test-coveralls",
+    "test": "npm run test-api",
+    "lint-api": "eslint index.js",
+    "lint-test": "eslint --env mocha test.js",
+    "lint-script": "eslint example.js",
+    "lint-style": "jscs --reporter inline index.js example.js test.js",
+    "lint": "npm run lint-api && npm run lint-test && npm run lint-script && npm run lint-style",
+    "make": "npm run lint && npm run test-coverage",
+    "bundle": "browserify --no-builtins index.js -s mdastRange > mdast-range.js",
+    "postbundle": "esmangle mdast-range.js > mdast-range.min.js",
+    "build-md": "mdast . --quiet --output",
+    "build": "npm run bundle && npm run build-md",
+    "prepublish": "npm run build"
+  }
+}

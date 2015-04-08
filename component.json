@@ -1,0 +1,17 @@
+{
+  "name": "mdast-range",
+  "version": "0.0.0",
+  "description": "Range information to mdast",
+  "license": "MIT",
+  "keywords": [
+    "range",
+    "location",
+    "position",
+    "node",
+    "mdast"
+  ],
+  "repository": "wooorm/mdast-range",
+  "scripts": [
+    "index.js"
+  ]
+}

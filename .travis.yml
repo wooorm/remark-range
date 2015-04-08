@@ -1,0 +1,16 @@
+language: node_js
+script: npm run-script test-travis
+node_js:
+- '0.10'
+- '0.11'
+- '0.12'
+- iojs
+after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
+sudo: false
+deploy:
+  provider: npm
+  email: tituswormer@gmail.com
+  api_key:
+    secure: OA4ceBzeLF52LgAI5n4lGAOh/s/ypLqRNsp9EhsMSLtyR4y8FGbNPxqjbefo/vTzBTL4IagDFpG7ktwRNgWTM/LegBbYY1/p3PRLYzInCdVEg3wlcTiWPmAOOGvvZyHuHjzltS855vqOx5dqfg/O2CRFOCo0Yw5vUaKMYNTHZfI=
+  on:
+    repo: wooorm/mdast-range

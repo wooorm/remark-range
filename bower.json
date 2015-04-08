@@ -1,0 +1,35 @@
+{
+  "name": "mdast-range",
+  "main": "mdast-range.js",
+  "description": "Range information to mdast",
+  "license": "MIT",
+  "keywords": [
+    "range",
+    "location",
+    "position",
+    "node",
+    "mdast"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/mdast-range.git"
+  },
+  "authors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "ignore": [
+    ".*",
+    "*.log",
+    "*.md",
+    "build/",
+    "components/",
+    "coverage/",
+    "node_modules/",
+    "build.js",
+    "example.js",
+    "index.js",
+    "test.js",
+    "component.json",
+    "package.json"
+  ]
+}

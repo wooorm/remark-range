@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "mdast-yaml-config",
+    "mdast-toc",
+    "mdast-usage",
+    "mdast-github"
+  ],
+  "settings": {
+    "bullet": "*"
+  }
+}
