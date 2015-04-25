@@ -51,6 +51,10 @@ describe('mdast-range()', function () {
         }, /Missing `file` for mdast-range/);
     });
 
+    it('should not throw with empty file', function () {
+        mdast.use(range).process('');
+    });
+
     it('should add `offset` to Position\'s', function (done) {
         var input = '_This_ and **that**\nbut also ~~foo~~ and [bar]()';
 

@@ -66,7 +66,7 @@ function transformer(ast, file) {
      * Invalid.
      */
 
-    if (!file || !file.contents) {
+    if (!file || typeof file.contents !== 'string') {
         throw new Error('Missing `file` for mdast-range');
     }
 
