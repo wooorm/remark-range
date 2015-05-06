@@ -1,4 +1,11 @@
 {
+  "excludeFiles": [
+    "build/",
+    "node_modules/",
+    "build.js",
+    "mdast-range.js",
+    "mdast-range.min.js"
+  ],
   "plugins": [
     "jscs-jsdoc"
   ],

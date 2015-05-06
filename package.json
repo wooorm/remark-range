@@ -15,6 +15,10 @@
     "url": "https://github.com/wooorm/mdast-range.git"
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
   "peerDependencies": {
     "mdast": ">=0.17.0"
   },
@@ -34,17 +38,16 @@
   },
   "scripts": {
     "test-api": "mocha --check-leaks test.js",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test.js",
-    "test-coverage": "istanbul cover _mocha -- test.js",
-    "test-travis": "npm run test-coveralls",
+    "test-coverage": "istanbul cover _mocha --report lcovonly -- --check-leaks test.js",
+    "test-travis": "npm run test-coverage",
     "test": "npm run test-api",
-    "lint-api": "eslint {index,test,example}.js",
-    "lint-style": "jscs --reporter inline index.js example.js test.js",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
     "lint": "npm run lint-api && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
     "bundle": "browserify --no-builtins index.js -s mdastRange > mdast-range.js",
     "postbundle": "esmangle mdast-range.js > mdast-range.min.js",
-    "build-md": "mdast . --quiet --output",
+    "build-md": "mdast . --output",
     "build": "npm run bundle && npm run build-md",
     "prepublish": "npm run build"
   }
