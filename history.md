@@ -3,6 +3,16 @@ mdast:
   setext: true
 ---
 
+0.2.1 / 2015-05-06
+==================
+
+*   Rename `History.md` > `history.md` ([c0f6de1](https://github.com/wooorm/mdast-range/commit/c0f6de1))
+*   Rename `Readme.md` > `readme.md` ([db33239](https://github.com/wooorm/mdast-range/commit/db33239))
+*   Add support for nodes without location information ([4fd919d](https://github.com/wooorm/mdast-range/commit/4fd919d))
+*   Refactor build ([494fac6](https://github.com/wooorm/mdast-range/commit/494fac6))
+*   Update jscs-jsdoc ([cb9af65](https://github.com/wooorm/mdast-range/commit/cb9af65))
+*   Update browserify ([4ce4beb](https://github.com/wooorm/mdast-range/commit/4ce4beb))
+
 0.2.0 / 2015-04-25
 ==================
 
