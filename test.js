@@ -55,6 +55,28 @@ describe('mdast-range()', function () {
         mdast.use(range).process('');
     });
 
+    it('should not fail on nodes without position', function () {
+        mdast.use(range).run({
+            'type': 'text',
+            'value': 'foo'
+        });
+
+        mdast.use(range).run({
+            'type': 'text',
+            'value': 'foo',
+            'position': {}
+        });
+
+        mdast.use(range).run({
+            'type': 'text',
+            'value': 'foo',
+            'position': {
+                'start': {},
+                'end': {}
+            }
+        });
+    });
+
     it('should add `offset` to Position\'s', function (done) {
         var input = '_This_ and **that**\nbut also ~~foo~~ and [bar]()';
 

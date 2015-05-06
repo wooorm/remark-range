@@ -50,7 +50,8 @@ function toOffsets(lines) {
  * @param {Object} position
  */
 function addRange(position, offsets) {
-    position.offset = (offsets[position.line - 2] || 0) + position.column - 1;
+    position.offset = ((offsets[position.line - 2] || 0) +
+        position.column - 1) || 0;
 }
 
 /**
@@ -81,8 +82,15 @@ function transformer(ast, file) {
      */
 
     visit(ast, function (node) {
-        addRange(node.position.start, contents);
-        addRange(node.position.end, contents);
+        var position = node.position;
+
+        if (position && position.start) {
+            addRange(position.start, contents);
+        }
+
+        if (position && position.end) {
+            addRange(position.end, contents);
+        }
     });
 }
 
