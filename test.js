@@ -55,6 +55,13 @@ describe('mdast-range()', function () {
         mdast.use(range).process('');
     });
 
+    it('should expose `offsetToPosition()`', function (done) {
+        mdast.use(range).process('', function (err, doc, file) {
+            assert('offsetToPosition' in file);
+            done(err);
+        });
+    });
+
     it('should not fail on nodes without position', function () {
         mdast.use(range).run({
             'type': 'text',
@@ -125,6 +132,39 @@ describe('mdast-range()', function () {
             assert(end(children[6]) === 48);
             assert(start(children[6].children[0]) === 42);
             assert(end(children[6].children[0]) === 45);
+
+            done(err);
+        });
+    });
+
+    it('should reverse offsets with `offsetToPosition()`', function (done) {
+        mdast.use(range).process('a\nb\n', function (err, doc, file) {
+            var pos;
+
+            pos = file.offsetToPosition(0);
+
+            assert(pos.line === 1);
+            assert(pos.column === 1);
+
+            pos = file.offsetToPosition(2);
+
+            assert(pos.line === 2);
+            assert(pos.column === 1);
+
+            pos = file.offsetToPosition(4);
+
+            assert(pos.line === 3);
+            assert(pos.column === 1);
+
+            pos = file.offsetToPosition(-1);
+
+            assert(pos.line === undefined);
+            assert(pos.column === undefined);
+
+            pos = file.offsetToPosition(5);
+
+            assert(pos.line === undefined);
+            assert(pos.column === undefined);
 
             done(err);
         });

@@ -314,6 +314,15 @@ var line = doc.slice(node.position.start.offset, node.position.end.offset);
 // Yields: `"\n"`
 ```
 
+To reverse an `offset` into a position, pass it into `file.offsetToPosition()`:
+
+```javascript
+mdast.use(range).process('foo', function (err, doc, file) {
+    file.offsetToPosition(0);
+    // Yields: `{line: 1, column: 1}`
+});
+```
+
 ## License
 
 [MIT](LICENSE) © [Titus Wormer](http://wooorm.com)

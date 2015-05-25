@@ -55,6 +55,45 @@ function addRange(position, offsets) {
 }
 
 /**
+ * Factory to reverse an offset into a line--column
+ * tuple.
+ *
+ * @param {Array.<number>} offsets - Offsets, as returned
+ *   by `toOffsets()`.
+ * @return {Function} - Bound method.
+ */
+function offsetToPositionFactory(offsets) {
+    /**
+     * Calculate offsets for `lines`.
+     *
+     * @param {number} offset - Offset.
+     * @return {Object} - Object with `line` and `colymn`
+     *   properties based on the bound `offsets`.
+     */
+    function offsetToPosition(offset) {
+        var index = -1;
+        var length = offsets.length;
+
+        if (offset < 0) {
+            return {};
+        }
+
+        while (++index < length) {
+            if (offsets[index] > offset) {
+                return {
+                    'line': index + 1,
+                    'column': (offset - offsets[index - 1] || 0) + 1
+                };
+            }
+        }
+
+        return {};
+    }
+
+    return offsetToPosition;
+}
+
+/**
  * Add ranges for `doc` to `ast`.
  *
  * @param {Node} ast
@@ -76,6 +115,12 @@ function transformer(ast, file) {
      */
 
     contents = toOffsets(contents);
+
+    /*
+     * Expose `offsetToPosition`.
+     */
+
+    file.offsetToPosition = offsetToPositionFactory(contents);
 
     /*
      * Add `offset` on both `start` and `end`.

@@ -55,6 +55,24 @@ function addRange(position, offsets) {
         position.column - 1) || 0;
 }
 
+/*
+ * Calculate offsets for `lines`.
+ */
+function offsetToPositionFactory(contents) {
+    /*
+     * Calculate offsets for `lines`.
+     *
+     * @this {File}
+     * @param {Array.<string>} lines
+     * @return {Array.<number>}
+     */
+    function offsetToPosition(offset) {
+        console.log('offset: ', offset, contents);
+    }
+
+    return offsetToPosition;
+}
+
 /**
  * Add ranges for `doc` to `ast`.
  *
@@ -77,6 +95,12 @@ function transformer(ast, file) {
      */
 
     contents = toOffsets(contents);
+
+    /*
+     * Expose `offsetToPosition`.
+     */
+
+    file.offsetToPosition = offsetToPositionFactory(contents);
 
     /*
      * Add `offset` on both `start` and `end`.
