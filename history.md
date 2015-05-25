@@ -3,6 +3,15 @@ mdast:
   setext: true
 ---
 
+0.3.0 / 2015-05-25
+==================
+
+*   Add `offsetToPosition()` to reverse offset into position ([935de29](https://github.com/wooorm/mdast-range/commit/935de29))
+*   Fix coverage ([a350066](https://github.com/wooorm/mdast-range/commit/a350066))
+*   Update mdast-github ([1773b85](https://github.com/wooorm/mdast-range/commit/1773b85))
+*   Update eslint ([81ae48e](https://github.com/wooorm/mdast-range/commit/81ae48e))
+*   Update mdast ([dc43c62](https://github.com/wooorm/mdast-range/commit/dc43c62))
+
 0.2.1 / 2015-05-06
 ==================
 
