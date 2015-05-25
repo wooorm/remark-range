@@ -55,19 +55,40 @@ function addRange(position, offsets) {
         position.column - 1) || 0;
 }
 
-/*
- * Calculate offsets for `lines`.
+/**
+ * Factory to reverse an offset into a line--column
+ * tuple.
+ *
+ * @param {Array.<number>} offsets - Offsets, as returned
+ *   by `toOffsets()`.
+ * @return {Function} - Bound method.
  */
-function offsetToPositionFactory(contents) {
-    /*
+function offsetToPositionFactory(offsets) {
+    /**
      * Calculate offsets for `lines`.
      *
-     * @this {File}
-     * @param {Array.<string>} lines
-     * @return {Array.<number>}
+     * @param {number} offset - Offset.
+     * @return {Object} - Object with `line` and `colymn`
+     *   properties based on the bound `offsets`.
      */
     function offsetToPosition(offset) {
-        console.log('offset: ', offset, contents);
+        var index = -1;
+        var length = offsets.length;
+
+        if (offset < 0) {
+            return {};
+        }
+
+        while (++index < length) {
+            if (offsets[index] > offset) {
+                return {
+                    'line': index + 1,
+                    'column': (offset - offsets[index - 1] || 0) + 1
+                };
+            }
+        }
+
+        return {};
     }
 
     return offsetToPosition;
