@@ -83,7 +83,8 @@ Note the `offset` properties.
               "line": 1,
               "column": 6,
               "offset": 5
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -102,7 +103,8 @@ Note the `offset` properties.
                   "line": 1,
                   "column": 15,
                   "offset": 14
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -116,7 +118,8 @@ Note the `offset` properties.
               "line": 1,
               "column": 16,
               "offset": 15
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -132,7 +135,10 @@ Note the `offset` properties.
               "line": 2,
               "column": 1,
               "offset": 17
-            }
+            },
+            "indent": [
+              1
+            ]
           }
         },
         {
@@ -151,7 +157,8 @@ Note the `offset` properties.
                   "line": 2,
                   "column": 13,
                   "offset": 29
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -165,7 +172,8 @@ Note the `offset` properties.
               "line": 2,
               "column": 15,
               "offset": 31
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -181,7 +189,10 @@ Note the `offset` properties.
               "line": 3,
               "column": 5,
               "offset": 37
-            }
+            },
+            "indent": [
+              1
+            ]
           }
         },
         {
@@ -197,7 +208,8 @@ Note the `offset` properties.
               "line": 3,
               "column": 11,
               "offset": 43
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -213,7 +225,8 @@ Note the `offset` properties.
               "line": 3,
               "column": 12,
               "offset": 44
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -227,7 +240,11 @@ Note the `offset` properties.
           "line": 3,
           "column": 12,
           "offset": 44
-        }
+        },
+        "indent": [
+          1,
+          1
+        ]
       }
     }
   ],
