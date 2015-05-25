@@ -1,4 +1,5 @@
 build/
+coverage/
 mdast-range.js
 mdast-range.min.js
 build.js
