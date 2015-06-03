@@ -326,6 +326,17 @@ mdast.use(range).process('foo', function (err, doc, file) {
 });
 ```
 
+To turn any position object, use `file.positionToOffset()`:
+
+```javascript
+mdast.use(range).process('foo', function (err, doc, file) {
+    var pos = file.offsetToPosition(0);
+
+    file.positionToOffset(pos);
+    // Yields: `0`.
+});
+```
+
 ## License
 
 [MIT](LICENSE) © [Titus Wormer](http://wooorm.com)

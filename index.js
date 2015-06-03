@@ -49,9 +49,38 @@ function toOffsets(lines) {
  *
  * @param {Object} position
  */
-function addRange(position, offsets) {
-    position.offset = ((offsets[position.line - 2] || 0) +
-        position.column - 1) || 0;
+function addRange(position, fn) {
+    position.offset = fn(position);
+}
+
+/**
+ * Factory to reverse an offset into a line--column
+ * tuple.
+ *
+ * @param {Array.<number>} offsets - Offsets, as returned
+ *   by `toOffsets()`.
+ * @return {Function} - Bound method.
+ */
+function positionToOffsetFactory(offsets) {
+    /**
+     * Calculate offsets for `lines`.
+     *
+     * @param {Object} position - Position.
+     * @return {Object} - Object with `line` and `colymn`
+     *   properties based on the bound `offsets`.
+     */
+    function positionToOffset(position) {
+        var line = position && position.line;
+        var column = position && position.column;
+
+        if (!isNaN(line) && !isNaN(column)) {
+            return ((offsets[line - 2] || 0) + column - 1) || 0;
+        }
+
+        return -1;
+    }
+
+    return positionToOffset;
 }
 
 /**
@@ -101,6 +130,7 @@ function offsetToPositionFactory(offsets) {
  */
 function transformer(ast, file) {
     var contents = String(file).split('\n');
+    var positionToOffset;
 
     /*
      * Invalid.
@@ -111,16 +141,18 @@ function transformer(ast, file) {
     }
 
     /*
-     * Get length at each line.
+     * Construct.
      */
 
     contents = toOffsets(contents);
+    positionToOffset = positionToOffsetFactory(contents);
 
     /*
-     * Expose `offsetToPosition`.
+     * Expose methods.
      */
 
     file.offsetToPosition = offsetToPositionFactory(contents);
+    file.positionToOffset = positionToOffset;
 
     /*
      * Add `offset` on both `start` and `end`.
@@ -130,11 +162,11 @@ function transformer(ast, file) {
         var position = node.position;
 
         if (position && position.start) {
-            addRange(position.start, contents);
+            addRange(position.start, positionToOffset);
         }
 
         if (position && position.end) {
-            addRange(position.end, contents);
+            addRange(position.end, positionToOffset);
         }
     });
 }
