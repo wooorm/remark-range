@@ -3,6 +3,13 @@ mdast:
   setext: true
 ---
 
+0.4.0 / 2015-06-03
+==================
+
+*   Remove dollar signs of shell code in `readme.md` ([4c0cd17](https://github.com/wooorm/mdast-range/commit/4c0cd17))
+*   Add `positionToOffset` to turn a position into an offset ([bd54954](https://github.com/wooorm/mdast-range/commit/bd54954))
+*   Update mdast-toc ([497cbeb](https://github.com/wooorm/mdast-range/commit/497cbeb))
+
 0.3.0 / 2015-05-25
 ==================
 
