@@ -7,19 +7,19 @@ Add range information to **mdast** nodes, so you can slice sources!
 [npm](https://docs.npmjs.com/cli/install)
 
 ```bash
-$ npm install mdast-range
+npm install mdast-range
 ```
 
 [Component.js](https://github.com/componentjs/component)
 
 ```bash
-$ component install wooorm/mdast-range
+component install wooorm/mdast-range
 ```
 
 [Bower](http://bower.io/#install-packages)
 
 ```bash
-$ bower install mdast-range
+bower install mdast-range
 ```
 
 [Duo](http://duojs.org/#getting-started)
