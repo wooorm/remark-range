@@ -41,8 +41,11 @@ UMD: globals, AMD, and CommonJS ([uncompressed](mdast-range.js) and [compressed]
 ## Table of Contents
 
 *   [Usage](#usage)
+
 *   [API](#api)
+
     *   [mdast.use(range)](#mdastuserange)
+
 *   [License](#license)
 
 ## Usage
