@@ -5,6 +5,14 @@ mdast:
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+0.4.1 / 2015-06-14
+==================
+
+*   Add mdast-lint as a dev-dependency ([3198f35](https://github.com/wooorm/mdast-range/commit/3198f35))
+*   Add `.editorconfig` ([874a0ce](https://github.com/wooorm/mdast-range/commit/874a0ce))
+*   Update mdast, mdast-usage, mdast-yaml-config ([84d3faf](https://github.com/wooorm/mdast-range/commit/84d3faf))
+*   Update eslint ([13b72de](https://github.com/wooorm/mdast-range/commit/13b72de))
+
 0.4.0 / 2015-06-03
 ==================
 
