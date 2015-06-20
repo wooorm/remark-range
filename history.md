@@ -5,6 +5,13 @@ mdast:
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+0.4.2 / 2015-06-20
+==================
+
+*   Fix incorrect results on first line ([a0bf3e5](https://github.com/wooorm/mdast-range/commit/a0bf3e5))
+*   Update eslint ([efd9684](https://github.com/wooorm/mdast-range/commit/efd9684))
+*   Update mdast ([e7b9f43](https://github.com/wooorm/mdast-range/commit/e7b9f43))
+
 0.4.1 / 2015-06-14
 ==================
 
