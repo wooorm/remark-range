@@ -111,7 +111,7 @@ function offsetToPositionFactory(offsets) {
             if (offsets[index] > offset) {
                 return {
                     'line': index + 1,
-                    'column': (offset - offsets[index - 1] || 0) + 1
+                    'column': (offset - (offsets[index - 1] || 0)) + 1
                 };
             }
         }
