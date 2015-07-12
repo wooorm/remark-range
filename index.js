@@ -1,29 +1,10 @@
 'use strict';
 
-/**
- * Visit.
- *
- * @param {Node} tree
- * @param {function(node)} callback
+/*
+ * Dependencies.
  */
-function visit(tree, callback) {
-    /**
-     * Visit a single node.
-     */
-    function one(node) {
-        callback(node);
 
-        var children = node.children;
-        var index = -1;
-        var length = children ? children.length : 0;
-
-        while (++index < length) {
-            one(children[index]);
-        }
-    }
-
-    one(tree);
-}
+var visit = require('mdast-util-visit');
 
 /**
  * Calculate offsets for `lines`.
