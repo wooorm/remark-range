@@ -1,4 +1,4 @@
-# mdast-range [![Build Status](https://img.shields.io/travis/wooorm/mdast-range.svg?style=flat)](https://travis-ci.org/wooorm/mdast-range) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast-range.svg?style=flat)](https://coveralls.io/r/wooorm/mdast-range?branch=master)
+# mdast-range [![Build Status](https://img.shields.io/travis/wooorm/mdast-range.svg)](https://travis-ci.org/wooorm/mdast-range) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-range.svg)](https://codecov.io/github/wooorm/mdast-range)
 
 Patch index-based ranges on **mdast** nodes, so you can slice sources!
 
