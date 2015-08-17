@@ -1,3 +1,11 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:range
+ * @fileoverview Patch index-based range on mdast nodes.
+ */
+
 'use strict';
 
 /*

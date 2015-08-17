@@ -1,7 +1,7 @@
 {
   "name": "mdast-range",
   "main": "mdast-range.js",
-  "description": "Range information to mdast",
+  "description": "Patch index-based range on mdast nodes",
   "license": "MIT",
   "keywords": [
     "range",
