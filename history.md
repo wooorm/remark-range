@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+1.0.0 / 2015-08-17
+==================
+
+*   Update dependencies, dev-dependencies ([a60fd10](https://github.com/wooorm/mdast-range/commit/a60fd10))
+
 0.4.3 / 2015-07-12
 ==================
 

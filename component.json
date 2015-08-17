@@ -1,6 +1,6 @@
 {
   "name": "mdast-range",
-  "version": "0.4.3",
+  "version": "1.0.0",
   "description": "Patch index-based ranges on mdast nodes",
   "license": "MIT",
   "keywords": [
