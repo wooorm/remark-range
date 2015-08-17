@@ -1,7 +1,8 @@
 {
+  "output": true,
   "plugins": [
+    "comment-config",
     "lint",
-    "yaml-config",
     "toc",
     "usage",
     "github"

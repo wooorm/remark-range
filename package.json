@@ -34,7 +34,7 @@
     "mdast-lint": "^0.4.0",
     "mdast-toc": "^0.5.1",
     "mdast-usage": "^0.3.0",
-    "mdast-yaml-config": "^1.0.0",
+    "mdast-comment-config": "^1.0.0",
     "mocha": "^2.0.0"
   },
   "scripts": {
@@ -49,7 +49,7 @@
     "make": "npm run lint && npm run test-coverage",
     "bundle": "browserify --no-builtins index.js -s mdastRange > mdast-range.js",
     "postbundle": "esmangle mdast-range.js > mdast-range.min.js",
-    "build-md": "mdast . --output --quiet",
+    "build-md": "mdast . --quiet",
     "build": "npm run bundle && npm run build-md"
   }
 }
