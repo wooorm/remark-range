@@ -11,7 +11,7 @@
     "mdast"
   ],
   "dependencies": {
-    "mdast-util-visit": "^0.1.1"
+    "unist-util-visit": "^1.0.0"
   },
   "repository": {
     "type": "git",
@@ -23,18 +23,18 @@
     "LICENSE"
   ],
   "devDependencies": {
-    "browserify": "^10.0.0",
-    "eslint": "^0.24.0",
+    "browserify": "^11.0.0",
+    "eslint": "^1.0.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
-    "jscs": "^1.0.0",
+    "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
-    "mdast": "^0.26.0",
+    "mdast": "^1.0.0",
     "mdast-github": "^0.3.0",
     "mdast-lint": "^0.4.0",
     "mdast-toc": "^0.5.1",
     "mdast-usage": "^0.3.0",
-    "mdast-yaml-config": "^0.2.0",
+    "mdast-yaml-config": "^1.0.0",
     "mocha": "^2.0.0"
   },
   "scripts": {

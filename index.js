@@ -4,12 +4,12 @@
  * Dependencies.
  */
 
-var visit = require('mdast-util-visit');
+var visit = require('unist-util-visit');
 
 /**
  * Calculate offsets for `lines`.
  *
- * @param {Array.<string>} lines
+ * @param {Array.<string>} lines - Lines to compile.
  * @return {Array.<number>}
  */
 function toOffsets(lines) {
@@ -28,7 +28,7 @@ function toOffsets(lines) {
 /**
  * Add an offset based on `offsets` to `position`.
  *
- * @param {Object} position
+ * @param {Object} position - Position.
  */
 function addRange(position, fn) {
     position.offset = fn(position);
@@ -104,10 +104,10 @@ function offsetToPositionFactory(offsets) {
 }
 
 /**
- * Add ranges for `doc` to `ast`.
+ * Add ranges for `ast`.
  *
- * @param {Node} ast
- * @param {File} file
+ * @param {Node} ast - Context to patch.
+ * @param {VFile} file - Virtual file.
  */
 function transformer(ast, file) {
     var contents = String(file).split('\n');
