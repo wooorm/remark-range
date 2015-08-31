@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+1.0.1 / 2015-08-31
+==================
+
+*   Update eslint-env comments (c93243d)
+*   Update dev-dependencies (2f46776)
+
 1.0.0 / 2015-08-17
 ==================
 
