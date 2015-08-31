@@ -1,6 +1,14 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:range
+ * @fileoverview Test suite for `mdast-range`.
+ */
+
 'use strict';
 
-/* eslint-env mocha */
+/* eslint-env node, mocha */
 
 /*
  * Dependencies.
