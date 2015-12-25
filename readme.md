@@ -1,40 +1,40 @@
-# mdast-range [![Build Status](https://img.shields.io/travis/wooorm/mdast-range.svg)](https://travis-ci.org/wooorm/mdast-range) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-range.svg)](https://codecov.io/github/wooorm/mdast-range)
+# remark-range [![Build Status](https://img.shields.io/travis/wooorm/remark-range.svg)](https://travis-ci.org/wooorm/remark-range) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/remark-range.svg)](https://codecov.io/github/wooorm/remark-range)
 
-Patch index-based ranges on **mdast** nodes, so you can slice sources!
+Patch index-based ranges on **remark** nodes, so you can slice sources!
 
 ## Installation
 
 [npm](https://docs.npmjs.com/cli/install)
 
 ```bash
-npm install mdast-range
+npm install remark-range
 ```
 
 [Component.js](https://github.com/componentjs/component)
 
 ```bash
-component install wooorm/mdast-range
+component install wooorm/remark-range
 ```
 
 [Bower](http://bower.io/#install-packages)
 
 ```bash
-bower install mdast-range
+bower install remark-range
 ```
 
 [Duo](http://duojs.org/#getting-started)
 
 ```javascript
-var range = require('wooorm/mdast-range');
+var range = require('wooorm/remark-range');
 ```
 
-UMD: globals, AMD, and CommonJS ([uncompressed](mdast-range.js) and [compressed](mdast-range.min.js)):
+UMD: globals, AMD, and CommonJS ([uncompressed](remark-range.js) and [compressed](remark-range.min.js)):
 
 ```html
-<script src="path/to/mdast.js"></script>
-<script src="path/to/mdast-range.js"></script>
+<script src="path/to/remark.js"></script>
+<script src="path/to/remark-range.js"></script>
 <script>
-  mdast.use(mdastRange);
+  remark.use(remarkRange);
 </script>
 ```
 
@@ -44,7 +44,7 @@ UMD: globals, AMD, and CommonJS ([uncompressed](mdast-range.js) and [compressed]
 
 *   [API](#api)
 
-    *   [mdast.use(range)](#mdastuserange)
+    *   [remark.use(range)](#remarkuserange)
 
 *   [License](#license)
 
@@ -53,15 +53,15 @@ UMD: globals, AMD, and CommonJS ([uncompressed](mdast-range.js) and [compressed]
 Dependencies and input:
 
 ```javascript
-var range = require('mdast-range');
-var mdast = require('mdast').use(range);
+var range = require('remark-range');
+var remark = require('remark').use(range);
 var doc = 'Some *emphasis*,\n**strongness**,\nand `code`.';
 ```
 
 And when the plugin is run, the ast looks as follows:
 
 ```javascript
-mdast.process(doc);
+remark.process(doc);
 ```
 
 Note the `offset` properties.
@@ -268,9 +268,9 @@ Note the `offset` properties.
 
 ## API
 
-### [mdast](https://github.com/wooorm/mdast#api).[use](https://github.com/wooorm/mdast#mdastuseplugin-options)(range)
+### [remark](https://github.com/wooorm/remark#api).[use](https://github.com/wooorm/remark#remarkuseplugin-options)(range)
 
-Adds `offset` to each node’s [**Position**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#location).
+Adds `offset` to each node’s [**Position**](https://github.com/wooorm/remark/blob/master/doc/Nodes.md#location).
 
 Where normally nodes have a line based positional information, such as:
 
@@ -320,7 +320,7 @@ var line = doc.slice(node.position.start.offset, node.position.end.offset);
 To reverse an `offset` into a position, pass it into `file.offsetToPosition()`:
 
 ```javascript
-mdast.use(range).process('foo', function (err, doc, file) {
+remark.use(range).process('foo', function (err, doc, file) {
     file.offsetToPosition(0);
     // Yields: `{line: 1, column: 1}`
 });
@@ -329,7 +329,7 @@ mdast.use(range).process('foo', function (err, doc, file) {
 To turn any position object, use `file.positionToOffset()`:
 
 ```javascript
-mdast.use(range).process('foo', function (err, doc, file) {
+remark.use(range).process('foo', function (err, doc, file) {
     var pos = file.offsetToPosition(0);
 
     file.positionToOffset(pos);

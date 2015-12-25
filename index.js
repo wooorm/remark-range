@@ -2,7 +2,7 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:range
+ * @module remark:range
  * @fileoverview Patch index-based range on mdast nodes.
  */
 
@@ -128,7 +128,7 @@ function transformer(ast, file) {
      */
 
     if (!file || typeof file.contents !== 'string') {
-        throw new Error('Missing `file` for mdast-range');
+        throw new Error('Missing `file` for remark-range');
     }
 
     /*

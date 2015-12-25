@@ -1,21 +1,21 @@
 {
-  "name": "mdast-range",
+  "name": "remark-range",
   "version": "1.0.1",
-  "description": "Patch index-based ranges on mdast nodes",
+  "description": "Patch index-based ranges on remark nodes",
   "license": "MIT",
   "keywords": [
     "range",
     "location",
     "position",
     "node",
-    "mdast"
+    "remark"
   ],
   "dependencies": {
     "unist-util-visit": "^1.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wooorm/mdast-range.git"
+    "url": "https://github.com/wooorm/remark-range.git"
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "files": [
@@ -29,12 +29,12 @@
     "istanbul": "^0.3.0",
     "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
-    "mdast": "^1.0.0",
-    "mdast-github": "^1.0.0",
-    "mdast-lint": "^1.0.0",
-    "mdast-toc": "^1.0.0",
-    "mdast-usage": "^1.0.0",
-    "mdast-comment-config": "^1.0.0",
+    "remark": "^3.0.0",
+    "remark-github": "^2.0.0",
+    "remark-lint": "^2.0.0",
+    "remark-toc": "^2.0.0",
+    "remark-usage": "^2.0.0",
+    "remark-comment-config": "^2.0.0",
     "mocha": "^2.0.0"
   },
   "scripts": {
@@ -46,9 +46,9 @@
     "lint-style": "jscs --reporter inline .",
     "lint": "npm run lint-api && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
-    "bundle": "browserify --no-builtins index.js -s mdastRange > mdast-range.js",
-    "postbundle": "esmangle mdast-range.js > mdast-range.min.js",
-    "build-md": "mdast . --quiet",
+    "bundle": "browserify --no-builtins index.js -s remarkRange > remark-range.js",
+    "postbundle": "esmangle remark-range.js > remark-range.min.js",
+    "build-md": "remark . --quiet --frail",
     "build": "npm run bundle && npm run build-md"
   }
 }

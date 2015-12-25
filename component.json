@@ -1,19 +1,19 @@
 {
-  "name": "mdast-range",
+  "name": "remark-range",
   "version": "1.0.1",
-  "description": "Patch index-based ranges on mdast nodes",
+  "description": "Patch index-based ranges on remark nodes",
   "license": "MIT",
   "keywords": [
     "range",
     "location",
     "position",
     "node",
-    "mdast"
+    "remark"
   ],
   "dependencies": {
     "wooorm/unist-util-visit": "^1.0.0"
   },
-  "repository": "wooorm/mdast-range",
+  "repository": "wooorm/remark-range",
   "scripts": [
     "index.js"
   ]

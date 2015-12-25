@@ -1,18 +1,18 @@
 {
-  "name": "mdast-range",
-  "main": "mdast-range.js",
-  "description": "Patch index-based range on mdast nodes",
+  "name": "remark-range",
+  "main": "remark-range.js",
+  "description": "Patch index-based range on remark nodes",
   "license": "MIT",
   "keywords": [
     "range",
     "location",
     "position",
     "node",
-    "mdast"
+    "remark"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wooorm/mdast-range.git"
+    "url": "https://github.com/wooorm/remark-range.git"
   },
   "authors": [
     "Titus Wormer <tituswormer@gmail.com>"

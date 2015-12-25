@@ -2,8 +2,8 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:range
- * @fileoverview Test suite for `mdast-range`.
+ * @module remark:range
+ * @fileoverview Test suite for `remark-range`.
  */
 
 'use strict';
@@ -15,7 +15,7 @@
  */
 
 var assert = require('assert');
-var mdast = require('mdast');
+var remark = require('remark');
 var range = require('./');
 
 /*
@@ -32,7 +32,7 @@ var throws = assert.throws;
  * @param {Function} done - Callback.
  */
 function process(value, done) {
-    mdast.use(range).run(mdast.parse(value), value, done);
+    remark.use(range).run(remark.parse(value), value, done);
 }
 
 /**
@@ -59,37 +59,37 @@ function end(node) {
  * Tests.
  */
 
-describe('mdast-range()', function () {
+describe('remark-range()', function () {
     it('should throw without file', function () {
         throws(function () {
-            range(mdast())(mdast.parse('Foo'));
-        }, /Missing `file` for mdast-range/);
+            range(remark())(remark.parse('Foo'));
+        }, /Missing `file` for remark-range/);
     });
 
     it('should not throw with empty file', function () {
-        mdast.use(range).process('');
+        remark.use(range).process('');
     });
 
     it('should expose `offsetToPosition()`', function (done) {
-        mdast.use(range).process('', function (err, file) {
+        remark.use(range).process('', function (err, file) {
             assert('offsetToPosition' in file);
             done(err);
         });
     });
 
     it('should not fail on nodes without position', function () {
-        mdast.use(range).run({
+        remark.use(range).run({
             'type': 'text',
             'value': 'foo'
         });
 
-        mdast.use(range).run({
+        remark.use(range).run({
             'type': 'text',
             'value': 'foo',
             'position': {}
         });
 
-        mdast.use(range).run({
+        remark.use(range).run({
             'type': 'text',
             'value': 'foo',
             'position': {
@@ -153,7 +153,7 @@ describe('mdast-range()', function () {
     });
 
     it('should reverse offsets with `offsetToPosition()`', function (done) {
-        mdast.use(range).process('a\nb\n', function (err, file) {
+        remark.use(range).process('a\nb\n', function (err, file) {
             var pos;
 
             pos = file.offsetToPosition(0);
