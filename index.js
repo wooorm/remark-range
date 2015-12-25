@@ -20,7 +20,7 @@ var visit = require('unist-util-visit');
  * Calculate offsets for `lines`.
  *
  * @param {Array.<string>} lines - Lines to compile.
- * @return {Array.<number>}
+ * @return {Array.<number>} - List of offsets per line.
  */
 function toOffsets(lines) {
     var total = 0;
@@ -39,6 +39,7 @@ function toOffsets(lines) {
  * Add an offset based on `offsets` to `position`.
  *
  * @param {Object} position - Position.
+ * @param {Function} fn - Calculator.
  */
 function addRange(position, fn) {
     position.offset = fn(position);
