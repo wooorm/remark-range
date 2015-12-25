@@ -1,7 +1,5 @@
-build/
 components/
 coverage/
-build.js
 example.js
 remark-range.js
 remark-range.min.js
