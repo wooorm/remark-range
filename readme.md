@@ -10,27 +10,9 @@ Patch index-based ranges on **remark** nodes, so you can slice sources!
 npm install remark-range
 ```
 
-[Component.js](https://github.com/componentjs/component)
-
-```bash
-component install wooorm/remark-range
-```
-
-[Duo](http://duojs.org/#getting-started)
-
-```javascript
-var range = require('wooorm/remark-range');
-```
-
-UMD: globals, AMD, and CommonJS ([uncompressed](remark-range.js) and [compressed](remark-range.min.js)):
-
-```html
-<script src="path/to/remark.js"></script>
-<script src="path/to/remark-range.js"></script>
-<script>
-  remark.use(remarkRange);
-</script>
-```
+**remark-range** is also available for [duo](http://duojs.org/#getting-started),
+and as an AMD, CommonJS, and globals module, [uncompressed and
+compressed](https://github.com/wooorm/remark-range/releases).
 
 ## Table of Contents
 
