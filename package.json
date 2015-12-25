@@ -1,6 +1,6 @@
 {
   "name": "remark-range",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Patch index-based ranges on remark nodes",
   "license": "MIT",
   "keywords": [

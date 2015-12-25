@@ -2,6 +2,14 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+2.0.0 / 2015-12-25
+==================
+
+*   Remove distribution files from source ([2825444](https://github.com/wooorm/remark-range/commit/2825444))
+*   Remove support for bower ([c450fef](https://github.com/wooorm/remark-range/commit/c450fef))
+*   Refactor to replace mocha with tape ([0e8a8fe](https://github.com/wooorm/remark-range/commit/0e8a8fe))
+*   Rename `mdast-range` > `remark-range` ([c565b69](https://github.com/wooorm/remark-range/commit/c565b69))
+
 1.0.1 / 2015-08-31
 ==================
 
