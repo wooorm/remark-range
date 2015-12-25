@@ -16,12 +16,6 @@ npm install remark-range
 component install wooorm/remark-range
 ```
 
-[Bower](http://bower.io/#install-packages)
-
-```bash
-bower install remark-range
-```
-
 [Duo](http://duojs.org/#getting-started)
 
 ```javascript
