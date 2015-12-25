@@ -8,22 +8,15 @@
 
 'use strict';
 
-/* eslint-env node, mocha */
+/* eslint-env node */
 
 /*
  * Dependencies.
  */
 
-var assert = require('assert');
+var test = require('tape');
 var remark = require('remark');
 var range = require('./');
-
-/*
- * Methods.
- */
-
-var equal = assert.strictEqual;
-var throws = assert.throws;
 
 /**
  * Shortcut to process.
@@ -59,25 +52,28 @@ function end(node) {
  * Tests.
  */
 
-describe('remark-range()', function () {
-    it('should throw without file', function () {
-        throws(function () {
+test('remark-range()', function (t) {
+    t.throws(
+        function () {
             range(remark())(remark.parse('Foo'));
-        }, /Missing `file` for remark-range/);
-    });
+        },
+        /Missing `file` for remark-range/,
+        'should throw without file'
+    );
 
-    it('should not throw with empty file', function () {
+    t.doesNotThrow(function () {
         remark.use(range).process('');
+    }, 'should not throw with empty file');
+
+    remark.use(range).process('', function (err, file) {
+        t.equal(
+            'offsetToPosition' in file,
+            true,
+            'should expose `offsetToPosition()`'
+        );
     });
 
-    it('should expose `offsetToPosition()`', function (done) {
-        remark.use(range).process('', function (err, file) {
-            assert('offsetToPosition' in file);
-            done(err);
-        });
-    });
-
-    it('should not fail on nodes without position', function () {
+    t.doesNotThrow(function () {
         remark.use(range).run({
             'type': 'text',
             'value': 'foo'
@@ -97,91 +93,88 @@ describe('remark-range()', function () {
                 'end': {}
             }
         });
+    }, 'should not fail on nodes without position');
+
+    // it('should add `offset` to Position\'s', function (done) {
+    var input = '_This_ and **that**\nbut also ~~foo~~ and [bar]()';
+
+    process(input, function (err, ast) {
+        var paragraph = ast.children[0];
+        var children = paragraph.children;
+
+        t.ifErr(err, 'should not fail');
+
+        t.equal(start(ast), 0);
+        t.equal(end(ast), input.length);
+
+        t.equal(start(paragraph), 0);
+        t.equal(end(paragraph), input.length);
+
+        // emphasis
+        t.equal(start(children[0]), 0);
+        t.equal(end(children[0]), 6);
+        t.equal(start(children[0].children[0]), 1);
+        t.equal(end(children[0].children[0]), 5);
+
+        // text
+        t.equal(start(children[1]), 6);
+        t.equal(end(children[1]), 11);
+
+        // strong
+        t.equal(start(children[2]), 11);
+        t.equal(end(children[2]), 19);
+        t.equal(start(children[2].children[0]), 13);
+        t.equal(end(children[2].children[0]), 17);
+
+        // text
+        t.equal(start(children[3]), 19);
+        t.equal(end(children[3]), 29);
+
+        // deletion
+        t.equal(start(children[4]), 29);
+        t.equal(end(children[4]), 36);
+        t.equal(start(children[4].children[0]), 31);
+        t.equal(end(children[4].children[0]), 34);
+
+        // text
+        t.equal(start(children[5]), 36);
+        t.equal(end(children[5]), 41);
+
+        // link
+        t.equal(start(children[6]), 41);
+        t.equal(end(children[6]), 48);
+        t.equal(start(children[6].children[0]), 42);
+        t.equal(end(children[6].children[0]), 45);
     });
 
-    it('should add `offset` to Position\'s', function (done) {
-        var input = '_This_ and **that**\nbut also ~~foo~~ and [bar]()';
+    remark.use(range).process('a\nb\n', function (err, file) {
+        var pos = file.offsetToPosition(0);
 
-        process(input, function (err, ast) {
-            var paragraph = ast.children[0];
-            var children = paragraph.children;
+        t.ifErr(err, 'should not fail');
 
-            equal(start(ast), 0);
-            equal(end(ast), input.length);
+        t.equal(pos.line, 1);
+        t.equal(pos.column, 1);
 
-            equal(start(paragraph), 0);
-            equal(end(paragraph), input.length);
+        pos = file.offsetToPosition(2);
 
-            // emphasis
-            equal(start(children[0]), 0);
-            equal(end(children[0]), 6);
-            equal(start(children[0].children[0]), 1);
-            equal(end(children[0].children[0]), 5);
+        t.equal(pos.line, 2);
+        t.equal(pos.column, 1);
 
-            // text
-            equal(start(children[1]), 6);
-            equal(end(children[1]), 11);
+        pos = file.offsetToPosition(4);
 
-            // strong
-            equal(start(children[2]), 11);
-            equal(end(children[2]), 19);
-            equal(start(children[2].children[0]), 13);
-            equal(end(children[2].children[0]), 17);
+        t.equal(pos.line, 3);
+        t.equal(pos.column, 1);
 
-            // text
-            equal(start(children[3]), 19);
-            equal(end(children[3]), 29);
+        pos = file.offsetToPosition(-1);
 
-            // deletion
-            equal(start(children[4]), 29);
-            equal(end(children[4]), 36);
-            equal(start(children[4].children[0]), 31);
-            equal(end(children[4].children[0]), 34);
+        t.equal(pos.line, undefined);
+        t.equal(pos.column, undefined);
 
-            // text
-            equal(start(children[5]), 36);
-            equal(end(children[5]), 41);
+        pos = file.offsetToPosition(5);
 
-            // link
-            equal(start(children[6]), 41);
-            equal(end(children[6]), 48);
-            equal(start(children[6].children[0]), 42);
-            equal(end(children[6].children[0]), 45);
-
-            done(err);
-        });
+        t.equal(pos.line, undefined);
+        t.equal(pos.column, undefined);
     });
 
-    it('should reverse offsets with `offsetToPosition()`', function (done) {
-        remark.use(range).process('a\nb\n', function (err, file) {
-            var pos;
-
-            pos = file.offsetToPosition(0);
-
-            equal(pos.line, 1);
-            equal(pos.column, 1);
-
-            pos = file.offsetToPosition(2);
-
-            equal(pos.line, 2);
-            equal(pos.column, 1);
-
-            pos = file.offsetToPosition(4);
-
-            equal(pos.line, 3);
-            equal(pos.column, 1);
-
-            pos = file.offsetToPosition(-1);
-
-            equal(pos.line, undefined);
-            equal(pos.column, undefined);
-
-            pos = file.offsetToPosition(5);
-
-            equal(pos.line, undefined);
-            equal(pos.column, undefined);
-
-            done(err);
-        });
-    });
+    t.end();
 });
