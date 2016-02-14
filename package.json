@@ -1,52 +1,5 @@
 {
   "name": "remark-range",
-  "version": "2.0.0",
-  "description": "Patch index-based ranges on remark nodes",
-  "license": "MIT",
-  "keywords": [
-    "range",
-    "location",
-    "position",
-    "node",
-    "remark"
-  ],
-  "dependencies": {
-    "unist-util-visit": "^1.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wooorm/remark-range.git"
-  },
-  "author": "Titus Wormer <tituswormer@gmail.com>",
-  "files": [
-    "index.js",
-    "LICENSE"
-  ],
-  "devDependencies": {
-    "browserify": "^12.0.0",
-    "eslint": "^1.0.0",
-    "esmangle": "^1.0.0",
-    "istanbul": "^0.4.0",
-    "jscs": "^2.0.0",
-    "jscs-jsdoc": "^1.0.0",
-    "remark": "^3.0.0",
-    "remark-github": "^2.0.0",
-    "remark-lint": "^2.0.0",
-    "remark-toc": "^2.0.0",
-    "remark-usage": "^2.0.0",
-    "remark-comment-config": "^2.0.0",
-    "tape": "^4.0.0"
-  },
-  "scripts": {
-    "build-md": "remark . --quiet --frail",
-    "build-bundle": "browserify --no-builtins index.js -s remarkRange > remark-range.js",
-    "build-mangle": "esmangle remark-range.js > remark-range.min.js",
-    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
-    "lint-api": "eslint .",
-    "lint-style": "jscs --reporter inline .",
-    "lint": "npm run lint-api && npm run lint-style",
-    "test-api": "node test.js",
-    "test-coverage": "istanbul cover test.js",
-    "test": "npm run build && npm run lint && npm run test-coverage"
-  }
+  "version": "3.0.0",
+  "description": "Deprecated in favour of `vfile-location`"
 }

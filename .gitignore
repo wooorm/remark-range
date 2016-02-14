@@ -1,7 +1,0 @@
-.DS_Store
-*.log
-components/
-coverage/
-node_modules/
-remark-range.js
-remark-range.min.js
